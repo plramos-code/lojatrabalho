@@ -1,0 +1,17 @@
+{% extends 'produtos/base.html' %}
+{% block content %}
+<h1>Lista de Produtos</h1>
+<a href="{% url 'cria_produto' %}">Novo Produto</a>
+<ul>
+  {% for p in produtos %}
+    <li>
+      {{ p.nome }} - R$ {{ p.preco }}
+      [<a href="{% url 'edita_produto' p.pk %}">Editar</a>]
+      [<a href="{% url 'remove_produto' p.pk %}">Remover</a>]
+    </li>
+  {% empty %}
+    <li>Nenhum produto cadastrado.</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
